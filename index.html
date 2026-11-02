@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atika Amin — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0b0d12; --paper-2:#11141b; --card:#13161e; --ink:#eef0f5; --ink-2:#b3b8c4; --muted:#7a8191;
+    --line:#222631; --rule:#3a3f4d; --accent:#ff7a3d; --accent-soft:rgba(255,122,61,.12); --navy:#0f1626;
+    --serif:'Instrument Serif',Georgia,serif; --sans:'Geist',system-ui,sans-serif; --mono:'Geist Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .mark{font-family:var(--serif);font-size:24px;text-decoration:none;letter-spacing:-.01em}
+  .mark span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{font-size:14px;text-decoration:none;color:var(--ink-2)}
+  nav ul a:hover{color:var(--accent)}
+
+  /* hero */
+  .hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 4px rgba(22,163,74,.15)}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,9vw,112px);line-height:.95;letter-spacing:-.025em;margin:22px 0 26px}
+  h1 em{color:var(--accent)}
+  .lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:640px;font-weight:300}
+  .lede strong{font-weight:500;color:var(--ink)}
+  .cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--ink);transition:.2s}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+  .btn:not(.primary):hover{background:var(--ink);color:var(--paper)}
+
+  .hero-grid{display:grid;grid-template-columns:1fr 320px;gap:56px;align-items:center}
+  .photo{position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#1d2230,#12151d);border:1px solid #2c313d;display:flex;align-items:center;justify-content:center}
+  .photo::after{content:"";position:absolute;inset:0;border-radius:22px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo .initials{font-family:var(--serif);font-size:120px;color:#2f3544}
+  .photo-tag{position:absolute;left:14px;bottom:14px;background:rgba(11,13,18,.82);backdrop-filter:blur(6px);border:1px solid #2c313d;border-radius:999px;padding:7px 13px;font-size:12px;color:var(--ink-2);display:flex;gap:8px;align-items:center;z-index:2}
+  .photo-tag i{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;border-top:1px solid var(--rule)}
+  .stat{padding:22px 20px 0 0}
+  .stat + .stat{padding-left:20px;border-left:1px solid var(--line)}
+  .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:52px;line-height:1;letter-spacing:-.02em}
+  .stat b small{font-size:22px;color:var(--muted)}
+  .stat span{font-size:13px;color:var(--muted);display:block;margin-top:8px}
+
+  /* sections */
+  section{padding:96px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:48px;align-items:baseline}
+  .sec-num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,56px);line-height:1.02;letter-spacing:-.02em}
+  h2 em{color:var(--muted)}
+  .body-grid{display:grid;grid-template-columns:220px 1fr;gap:40px}
+
+  /* about */
+  .about p{font-size:19px;color:var(--ink-2);font-weight:300;max-width:720px}
+  .about p + p{margin-top:18px}
+  .facts{margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);max-width:720px}
+  .facts div{padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;display:flex;justify-content:space-between;gap:16px}
+  .facts div:nth-child(odd){padding-right:24px}
+  .facts div:nth-child(even){padding-left:24px;border-left:1px solid var(--line)}
+  .facts dt{color:var(--muted)} .facts dd{font-weight:500;text-align:right}
+
+  /* achievements */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+  .award{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:.25s}
+  .award:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(255,122,61,.25);border-color:#343a48}
+  .award .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .award h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.08;margin:14px 0 10px;letter-spacing:-.01em}
+  .award p{font-size:14px;color:var(--ink-2);flex:1}
+  .award .rank{display:inline-block;margin-top:18px;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);align-self:flex-start}
+  .award.dark{background:linear-gradient(160deg,#1c2744,#111829);color:#eef1f7;border-color:#2a3654}
+  .award.dark .tag{color:#9fb0cf} .award.dark p{color:#c9d2e3}
+  .award.dark .rank{background:rgba(255,255,255,.1);color:#ffd28a}
+  .award .glyph{position:absolute;right:-18px;top:-18px;font-family:var(--serif);font-size:140px;line-height:1;opacity:.06}
+  .award.dark .glyph{opacity:.1}
+
+  .ps{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ps-head{padding:22px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .ps-head h3{font-family:var(--serif);font-weight:400;font-size:26px}
+  .ps-head span{font-size:13px;color:var(--muted)}
+  .ps-row{display:grid;grid-template-columns:110px 1fr 150px 120px;gap:20px;align-items:center;padding:18px 26px;border-bottom:1px solid var(--line)}
+  .ps-row:last-child{border-bottom:none}
+  .ps-row .term{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .ps-row .lab{font-weight:500}
+  .ps-row .place{font-family:var(--serif);font-size:22px;color:var(--accent)}
+  .linkbtn{background:none;border:none;font:inherit;font-size:13px;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer;text-align:right}
+  .linkbtn:hover{color:var(--accent)}
+  .award .linkbtn{text-align:left;margin-top:14px;align-self:flex-start}
+  .award.dark .linkbtn{color:#c9d2e3}
+
+  /* experience */
+  .xp{border-top:1px solid var(--rule)}
+  .xp-item{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:30px 0;border-bottom:1px solid var(--line)}
+  .xp-item .when{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:6px}
+  .xp-item h3{font-size:21px;font-weight:500;letter-spacing:-.01em}
+  .xp-item .org{color:var(--accent);font-size:15px;margin:2px 0 12px}
+  .xp-item ul{padding-left:18px;color:var(--ink-2);font-size:15px}
+  .xp-item li{margin:4px 0}
+
+  /* projects */
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .proj{border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--paper);transition:.25s;display:flex;flex-direction:column}
+  .proj:hover{background:var(--card);border-color:#3a3f4d}
+  .proj.big{grid-column:span 2;background:radial-gradient(120% 140% at 0% 0%,rgba(255,122,61,.14),transparent 55%),var(--card);color:var(--ink);border-color:#2c313d;display:grid;grid-template-columns:1.1fr 1fr;gap:40px}
+  .proj.big:hover{border-color:#4a4f5d}
+  .proj .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .proj.big .k{color:#ffb38a}
+  .proj h3{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.05;margin:12px 0 12px;letter-spacing:-.01em}
+  .proj.big h3{font-size:46px}
+  .proj p{font-size:15px;color:var(--ink-2);flex:1}
+  .proj.big p{color:#c7cad3}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+  .chips span{font-family:var(--mono);font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--ink-2)}
+  .proj.big .chips span{border-color:#3a3e4a;color:#d7dae2}
+  .repo{margin-top:18px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;align-self:flex-start}
+  .repo:hover{text-decoration:underline;text-underline-offset:3px}
+  .pipeline{display:flex;flex-direction:column;gap:8px;align-self:center}
+  .pipeline div{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #2e323d;border-radius:10px;font-size:14px;color:#e6e8ee}
+  .pipeline div b{font-family:var(--mono);font-weight:400;font-size:11px;color:#ffb38a;width:26px}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule)}
+  .skill-col{padding:24px 20px 0 0}
+  .skill-col + .skill-col{padding-left:20px;border-left:1px solid var(--line)}
+  .skill-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px}
+  .skill-col li{list-style:none;font-size:15px;padding:5px 0;color:var(--ink-2)}
+
+  /* contact */
+  .contact{background:radial-gradient(90% 120% at 100% 0%,rgba(255,122,61,.12),transparent 60%),var(--navy);color:#eef1f7;border:none;padding:110px 0}
+  .contact h2{font-size:clamp(44px,7vw,88px);max-width:880px}
+  .contact h2 em{color:#ffb38a}
+  .contact-links{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid #3a4866}
+  .contact-links a,.contact-links div{padding:22px 20px 0 0;text-decoration:none}
+  .contact-links > * + *{padding-left:20px;border-left:1px solid #3a4866}
+  .contact-links small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fb0cf;margin-bottom:6px}
+  .contact-links span{font-size:17px;word-break:break-all}
+  .contact-links a:hover span{color:#ffb38a}
+  footer{background:var(--navy);color:#7f8eaa;font-size:13px;padding:0 0 36px}
+  footer .wrap{border-top:1px solid #3a4866;padding-top:22px;display:flex;justify-content:space-between}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(10,12,18,.88);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb figure{max-width:1000px;width:100%}
+  .lb img{width:100%;border-radius:8px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb figcaption{color:#d5d9e2;font-size:14px;margin-top:12px;text-align:center}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:880px){
+    nav ul{display:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .hero-grid{grid-template-columns:1fr}
+    .photo{max-width:260px;order:-1}
+    .stat:nth-child(3){padding-left:0;border-left:none}
+    .stat{padding-bottom:20px}
+    .sec-head,.body-grid,.xp-item{grid-template-columns:1fr;gap:12px}
+    .feat,.projects,.proj.big{grid-template-columns:1fr}
+    .proj.big{grid-column:auto}
+    .ps-row{grid-template-columns:1fr auto;gap:4px 16px}
+    .ps-row .lab{grid-column:1/-1;order:-1}
+    .skills{grid-template-columns:repeat(2,1fr)}
+    .skill-col:nth-child(3){padding-left:0;border-left:none}
+    .contact-links{grid-template-columns:1fr}
+    .contact-links > * + *{padding-left:0;border-left:none}
+    .facts{grid-template-columns:1fr}
+    .facts div:nth-child(even){padding-left:0;border-left:none}
+    .facts div:nth-child(odd){padding-right:0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">Atika Amin<span>.</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid"><div>
+    <div class="eyebrow"><span class="dot"></span>Open to internships &amp; graduate roles</div>
+    <h1>Atika Amin.<br>Software &amp; <em>IoT</em><br>developer.</h1>
+    <p class="lede">Final-year <strong>Computer Science &amp; Engineering</strong> student at <strong>United International University</strong> and Undergraduate Teaching Assistant, focused on <strong>IoT</strong> and <strong>software development</strong> — building connected devices and the software that makes them useful.</p>
+    <div class="cta">
+      <a class="btn primary" href="#achievements">View achievements →</a>
+      <a class="btn" href="https://github.com/Atika-Amin">GitHub</a>
+    </div>
+    </div>
+    <div class="photo"><img src="photo.jpg" alt="Atika Amin"><div class="photo-tag"><i></i>CSE · UIU · Dhaka</div></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>3.98<small>/4.00</small></b><span>Cumulative GPA</span></div>
+      <div class="stat"><b>6</b><span>Competition awards &amp; recognitions</span></div>
+      <div class="stat"><b>1<small> yr</small></b><span>Undergraduate TA, CSE Dept.</span></div>
+      <div class="stat"><b>3×</b><span>CSE Project Show award winner</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">01 — ABOUT</div><h2>Engineer by training,<br><em>builder by habit.</em></h2></div>
+    <div class="body-grid about">
+      <div></div>
+      <div>
+        <p>I'm a final-year CSE student whose main interests are <strong style="font-weight:500;color:var(--ink)">IoT and software development</strong>. I like the whole path from sensor to screen: firmware streaming ECG signals off an ESP32, the models that analyse them, and the backend and interface that put the result in front of a patient's family.</p>
+        <p>Alongside coursework, I've spent a year as an Undergraduate Teaching Assistant in the CSE department, and I've represented my university at international hackathons and national olympiads.</p>
+        <dl class="facts">
+          <div><dt>University</dt><dd>United International University</dd></div>
+          <div><dt>Programme</dt><dd>B.Sc. in CSE</dd></div>
+          <div><dt>CGPA</dt><dd>3.98 / 4.00</dd></div>
+          <div><dt>Year</dt><dd>Final year</dd></div>
+          <div><dt>Based in</dt><dd>Dhaka, Bangladesh</dd></div>
+          <div><dt>Focus</dt><dd>IoT · Software Development</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">02 — ACHIEVEMENTS</div><h2>Recognition<br><em>&amp; awards.</em></h2></div>
+
+    <div class="feat">
+      <article class="award dark reveal">
+        <div class="glyph">★</div>
+        <div class="tag">2026 · National</div>
+        <h3>Blockchain &amp; AI Olympiad Bangladesh</h3>
+        <p>Honorable Mention in the Artificial Intelligence category with Team CardiShirt, for an AI-powered wearable ECG monitoring system.</p>
+        <span class="rank">Honorable Mention</span>
+      </article>
+      <article class="award reveal">
+        <div class="glyph">✦</div>
+        <div class="tag">2025 · International</div>
+        <h3>NASA International Space Apps Challenge</h3>
+        <p>Selected as a Global Nominee — one of the projects advanced from local events to global judging.</p>
+        <span class="rank">Global Nominee</span>
+      </article>
+      <article class="award reveal">
+        <div class="glyph">+</div>
+        <div class="tag">7th Edition · International</div>
+        <h3>Harvard HSIL Hackathon</h3>
+        <p>Participated with Team Infinitum in the Harvard T.H. Chan Health Systems Innovation Lab hackathon on building high-value health systems leveraging AI.</p>
+        <span class="rank">Participant</span>
+        <button class="linkbtn" data-img="cert-4.jpg" data-cap="Harvard HSIL Hackathon, 7th Edition — Certificate of Participation">View certificate</button>
+      </article>
+    </div>
+
+    <div class="ps reveal">
+      <div class="ps-head"><h3>CSE Project Show, UIU</h3><span>Department of Computer Science &amp; Engineering</span></div>
+      <div class="ps-row"><span class="term">Spring 2025</span><span class="lab">Advanced Object-Oriented Programming Laboratory</span><span class="place">1st Runner Up</span><button class="linkbtn" data-img="cert-1.jpg" data-cap="CSE Project Show Spring 2025 — 1st Runner Up, Advanced OOP Laboratory">View certificate</button></div>
+      <div class="ps-row"><span class="term">Summer 2025</span><span class="lab">System Analysis &amp; Design Laboratory</span><span class="place">7th Runner Up</span><button class="linkbtn" data-img="cert-3.jpg" data-cap="CSE Project Show Summer 2025 — 7th Runner Up, System Analysis and Design Lab">View certificate</button></div>
+      <div class="ps-row"><span class="term">Fall 2025</span><span class="lab">Microprocessors &amp; Microcontrollers Laboratory</span><span class="place">4th Runner Up</span><button class="linkbtn" data-img="cert-2.jpg" data-cap="CSE Project Show Fall 2025 — 4th Runner Up, Microprocessors and Micro-controllers Lab">View certificate</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">03 — EXPERIENCE</div><h2>Teaching<br><em>&amp; industry.</em></h2></div>
+    <div class="xp">
+      <div class="xp-item reveal">
+        <div class="when">1 YEAR</div>
+        <div>
+          <h3>Undergraduate Teaching Assistant</h3>
+          <div class="org">Department of CSE, United International University</div>
+          <ul>
+            <li>Supported undergraduate CSE courses for a full year — lab sessions, doubt-clearing and student mentoring.</li>
+            <li>Assisted faculty with assessments, grading and course logistics.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="xp-item reveal">
+        <div class="when">INTERNSHIP</div>
+        <div>
+          <h3>AI / ML Intern</h3>
+          <div class="org">CodeAlpha</div>
+          <ul>
+            <li>Delivered four full-stack AI projects: language translation, an FAQ chatbot, music generation, and real-time object detection &amp; tracking. <a class="repo" style="margin:0" href="https://github.com/Atika-Amin/codealpha_tasks">Repo ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">04 — SELECTED WORK</div><h2>Things I've<br><em>built.</em></h2></div>
+    <div class="projects">
+      <article class="proj big reveal">
+        <div>
+          <div class="k">Flagship · IoT · Health-tech · BCOLBD 2026</div>
+          <h3>CardiShirt</h3>
+          <p>An AI-powered wearable ECG monitoring system. A smart shirt streams cardiac signals in real time; a hybrid CNN-LSTM model screens them; an LLM layer explains results in plain language; and families are alerted instantly through Telegram.</p>
+          <div class="chips"><span>ESP32</span><span>PyTorch</span><span>CNN-LSTM</span><span>Node.js</span><span>Prisma</span><span>PostgreSQL</span><span>React</span><span>Gemini</span></div>
+        </div>
+        <div class="pipeline">
+          <div><b>01</b>ESP32 + AD8232 / MAX30102 / MPU6050 sensor fusion</div>
+          <div><b>02</b>250 Hz ECG stream over WebSocket</div>
+          <div><b>03</b>CNN-LSTM cardiac screening model</div>
+          <div><b>04</b>Plain-language explanations &amp; triage chatbot</div>
+          <div><b>05</b>Live dashboard + family alerts</div>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">Health-tech · Full-stack</div>
+        <h3>ShasthyoShohay</h3>
+        <p>An AI-powered healthcare platform connecting patients, doctors, hospitals and pharmacies, with a Bangla-friendly experience. Features include an AI symptom checker, prescription upload with medicine price comparison, doctor search, emergency support and hospital bed management.</p>
+        <div class="chips"><span>React 19</span><span>Express 5</span><span>MySQL</span><span>JWT</span><span>RAG chatbot</span><span>Tailwind</span></div>
+        <a class="repo" href="https://github.com/Atika-Amin/Shastho-Shohay">View repository ↗</a>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">IoT · Assistive tech</div>
+        <h3>Smart Vision Stick</h3>
+        <p>An IoT white cane for visually impaired users. I built the safety layer: fall detection with Telegram emergency alerts, wet-surface detection with buzzer warnings, and live GPS tracking for caregivers over ESP8266.</p>
+        <div class="chips"><span>ESP32-CAM</span><span>ESP8266</span><span>GPS</span><span>Arduino C++</span><span>Telegram Bot</span></div>
+        <a class="repo" href="https://github.com/hamim0047/SMART-VISION-STICK">View repository ↗</a>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">Software · Educational game</div>
+        <h3>CodeHunter</h3>
+        <p>A 2D JavaFX game that teaches programming through reading, quizzes and treasure hunts. I built the single-player mechanics, every Tiled map, enemy behaviour, collision detection and the multiplayer maps.</p>
+        <div class="chips"><span>Java 17</span><span>JavaFX</span><span>MySQL</span><span>Sockets</span><span>Maven</span></div>
+        <a class="repo" href="https://github.com/Atika-Amin/CodeHunter">View repository ↗</a>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">AI Security · Research</div>
+        <h3>ShadowMemory</h3>
+        <p>A semantic security framework that detects indirect prompt-injection attacks hidden in documents retrieved by RAG-based LLM systems.</p>
+        <div class="chips"><span>LLMs</span><span>RAG</span><span>Python</span><span>Security</span></div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">Green AI · Research paper</div>
+        <h3>GreenMind Workload Router</h3>
+        <p>Adaptive, energy-aware AI routing. It scores each prompt's complexity and profiles the device's live CPU, RAM, GPU and battery, then runs the prompt on a right-sized local Ollama model or on Gemini in the cloud.</p>
+        <div class="chips"><span>FastAPI</span><span>Ollama</span><span>Gemini 2.5</span><span>React</span><span>psutil</span></div>
+        <a class="repo" href="https://github.com/Atika-Amin/GreenMind">View repository ↗</a>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">Document &amp; Speech AI · Bangla / English</div>
+        <h3>E-TIN Extraction System</h3>
+        <p>Turns bilingual Bangladeshi tax certificates and spoken Bangla into clean, structured English records. PDFs are parsed and fields extracted with an LLM; speech is transcribed with Whisper and processed by a local LLM. Everything is validated and stored in SQL Server, with a Flask dashboard for upload, search and review.</p>
+        <div class="chips"><span>Python</span><span>LLM extraction</span><span>Whisper</span><span>Ollama</span><span>MSSQL</span><span>Flask</span></div>
+        <a class="repo" href="https://github.com/Atika-Amin/E-TIN-Extraction">View repository ↗</a>
+      </article>
+
+      <article class="proj reveal">
+        <div class="k">HCI · Qualitative research</div>
+        <h3>Uncertainty in AI Output</h3>
+        <p>Interview-based study of how people experience uncertainty in AI responses, with design implications for neurodivergent users. Led analysis of AI usage context and avoidance behaviour.</p>
+        <div class="chips"><span>Thematic analysis</span><span>Taguette</span><span>HCI</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">05 — TOOLKIT</div><h2>Skills<br><em>&amp; stack.</em></h2></div>
+    <div class="skills">
+      <div class="skill-col"><h4>IoT &amp; Embedded</h4><ul><li>ESP32 · ESP32-CAM · ESP8266</li><li>Sensors, GPS &amp; Telegram alerts</li><li>Real-time WebSocket streaming</li><li>Microprocessors &amp; microcontrollers</li></ul></div>
+      <div class="skill-col"><h4>Software Development</h4><ul><li>Node.js · Express · Prisma</li><li>FastAPI · Flask</li><li>React · Vite</li></ul></div>
+      <div class="skill-col"><h4>Languages &amp; Data</h4><ul><li>Python · Java · JavaScript</li><li>C / C++ (Embedded)</li><li>PostgreSQL · SQL Server</li></ul></div>
+      <div class="skill-col"><h4>AI / ML</h4><ul><li>PyTorch, CNN-LSTM</li><li>LLM integration &amp; RAG</li><li>Whisper, Ollama, vLLM</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-num" style="color:#ffb38a">06 — CONTACT</div>
+    <h2 style="margin-top:20px">Let's build something <em>worth shipping.</em></h2>
+    <div class="contact-links">
+      <div><small>Email</small><span>aatika.amin98@gmail.com</span></div>
+      <a href="https://github.com/Atika-Amin"><small>GitHub</small><span>github.com/Atika-Amin ↗</span></a>
+      <div><small>University</small><span>United International University, Dhaka</span></div>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© 2026 Atika Amin</span><span>Dhaka, Bangladesh</span></div></footer>
+
+<div class="lb" id="lb"><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure></div>
+
+<script>
+  const lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  document.querySelectorAll('[data-img]').forEach(b=>b.addEventListener('click',()=>{img.src=b.dataset.img;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;lb.classList.add('open')}));
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
