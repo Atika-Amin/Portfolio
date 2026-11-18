@@ -125,6 +125,7 @@
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
   .chips span{font-family:var(--mono);font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--ink-2)}
   .proj.big .chips span{border-color:#3a3e4a;color:#d7dae2}
+  .proj.wide{grid-column:span 2}
   .repo{margin-top:18px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;align-self:flex-start}
   .repo:hover{text-decoration:underline;text-underline-offset:3px}
   .pipeline{display:flex;flex-direction:column;gap:8px;align-self:center}
@@ -170,7 +171,7 @@
     .stat{padding-bottom:20px}
     .sec-head,.body-grid,.xp-item{grid-template-columns:1fr;gap:12px}
     .feat,.projects,.proj.big{grid-template-columns:1fr}
-    .proj.big{grid-column:auto}
+    .proj.big,.proj.wide{grid-column:auto}
     .ps-row{grid-template-columns:1fr auto;gap:4px 16px}
     .ps-row .lab{grid-column:1/-1;order:-1}
     .skills{grid-template-columns:repeat(2,1fr)}
@@ -329,6 +330,23 @@
         </div>
       </article>
 
+      <article class="proj big reveal">
+        <div>
+          <div class="k">Real-world software · ERP · In progress</div>
+          <h3>Technosoft ERP</h3>
+          <p>A modern browser-based rebuild of Technosoft, a Visual FoxPro accounts and inventory system used for years by a garments company in Bangladesh. It keeps the original accounting rules and table schema so existing records can be migrated. Login, chart of accounts and voucher entry are live; journal, reports, projects and inventory are next.</p>
+          <div class="chips"><span>React 19</span><span>TypeScript</span><span>NestJS</span><span>Prisma</span><span>SQL Server</span><span>Tailwind</span><span>JWT</span></div>
+          <a class="repo" href="https://github.com/Atika-Amin/TechnoSoft-ERP">View repository ↗</a>
+        </div>
+        <div class="pipeline">
+          <div><b>01</b>React + TanStack Query client</div>
+          <div><b>02</b>Controller: HTTP only, no rules</div>
+          <div><b>03</b>Service: accounting rules &amp; validation</div>
+          <div><b>04</b>Repository: Prisma queries</div>
+          <div><b>05</b>SQL Server with legacy FoxPro schema</div>
+        </div>
+      </article>
+
       <article class="proj reveal">
         <div class="k">Health-tech · Full-stack</div>
         <h3>ShasthyoShohay</h3>
@@ -376,13 +394,12 @@
         <a class="repo" href="https://github.com/Atika-Amin/E-TIN-Extraction">View repository ↗</a>
       </article>
 
-      <article class="proj reveal">
+      <article class="proj wide reveal">
         <div class="k">HCI · Qualitative research</div>
         <h3>Uncertainty in AI Output</h3>
         <p>Interview-based study of how people experience uncertainty in AI responses, with design implications for neurodivergent users. Led analysis of AI usage context and avoidance behaviour.</p>
         <div class="chips"><span>Thematic analysis</span><span>Taguette</span><span>HCI</span></div>
       </article>
-
     </div>
   </div>
 </section>
@@ -392,7 +409,7 @@
     <div class="sec-head"><div class="sec-num">05 — TOOLKIT</div><h2>Skills<br><em>&amp; stack.</em></h2></div>
     <div class="skills">
       <div class="skill-col"><h4>IoT &amp; Embedded</h4><ul><li>ESP32 · ESP32-CAM · ESP8266</li><li>Sensors, GPS &amp; Telegram alerts</li><li>Real-time WebSocket streaming</li><li>Microprocessors &amp; microcontrollers</li></ul></div>
-      <div class="skill-col"><h4>Software Development</h4><ul><li>Node.js · Express · Prisma</li><li>FastAPI · Flask</li><li>React · Vite</li></ul></div>
+      <div class="skill-col"><h4>Software Development</h4><ul><li>Node.js · Express · Prisma</li><li>NestJS · TypeScript</li><li>FastAPI · Flask</li><li>React · Vite</li></ul></div>
       <div class="skill-col"><h4>Languages &amp; Data</h4><ul><li>Python · Java · JavaScript</li><li>C / C++ (Embedded)</li><li>PostgreSQL · SQL Server</li></ul></div>
       <div class="skill-col"><h4>AI / ML</h4><ul><li>PyTorch, CNN-LSTM</li><li>LLM integration &amp; RAG</li><li>Whisper, Ollama, vLLM</li></ul></div>
     </div>
